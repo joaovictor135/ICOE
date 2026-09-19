@@ -1,0 +1,927 @@
+/* CASA DE ORAÇÃO EBENÉZER
+   Substitua TODO o CSS anterior por este arquivo.
+   1. Cores e base | 2. Cabeçalho | 3. Início | 4. Seções
+   5. Liderança | 6. Agenda | 7. Galeria e contato | 8. Responsividade */
+
+/* 1. CORES E BASE — personalize as cores aqui. */
+:root {
+  --azul: #142c42;
+  --azul-profundo: #0c2032;
+  --dourado: #88632d;
+  --dourado-claro: #e0c18b;
+  --fundo: #fcfcfa;
+  --suave: #f0f3f5;
+  --texto: #4f5e6b;
+  --borda: #dce3e8;
+  --branco: #ffffff;
+  --raio: 20px;
+  --sombra: 0 18px 50px -28px rgba(20, 44, 66, .28);
+  --margem: max(24px, calc((100% - 1200px) / 2));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--azul);
+  overflow-wrap: break-word;
+}
+
+h1,
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+h1 {
+  margin-bottom: 26px;
+  font-size: clamp(2.65rem, 4.8vw, 4.5rem);
+  line-height: 1.09;
+  letter-spacing: -.045em;
+}
+
+h2 {
+  margin-bottom: 30px;
+  font-size: clamp(2rem, 3.3vw, 3.1rem);
+  line-height: 1.16;
+  letter-spacing: -.035em;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  font-weight: 650;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 5px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--dourado);
+  outline-offset: 5px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.skip {
+  position: fixed;
+  top: -150px;
+  left: 20px;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--branco);
+  color: var(--azul);
+  border-radius: 8px;
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+/* 2. CABEÇALHO */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px var(--margem);
+  background: rgba(252, 252, 250, .97);
+  border-bottom: 1px solid var(--borda);
+  backdrop-filter: blur(14px);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  color: var(--azul);
+  text-decoration: none;
+}
+
+.marca img {
+  flex: 0 0 76px;
+  width: 76px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.marca > span {
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: .13em;
+}
+
+.marca strong {
+  display: block;
+  margin-top: 1px;
+  font-family: Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 400;
+  letter-spacing: -.025em;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 26px;
+}
+
+nav a {
+  padding: 8px 0;
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+nav a:hover {
+  color: var(--dourado);
+}
+
+#menu-botao {
+  display: none;
+  min-height: 44px;
+  padding: 8px 14px;
+  color: var(--azul);
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+}
+
+/* BOTÕES — apenas elementos clicáveis recebem efeito de movimento. */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 13px 22px;
+  background: var(--azul);
+  color: var(--branco);
+  border: 1px solid var(--azul);
+  border-radius: 10px;
+  font-size: .9rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  text-align: center;
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+
+.botao:hover {
+  background: #244661;
+  box-shadow: var(--sombra);
+  transform: translateY(-2px);
+}
+
+.botao.contorno {
+  color: var(--azul);
+  background: transparent;
+  border-color: #a6b4c0;
+}
+
+.botao.contorno:hover {
+  background: var(--suave);
+}
+
+.botao.pequeno {
+  min-height: 44px;
+  padding: 10px 16px;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 3. INÍCIO — a fachada mantém sua proporção, sem recorte. */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.04fr;
+  align-items: center;
+  gap: clamp(30px, 5vw, 76px);
+  padding: 86px var(--margem) 96px;
+  background: linear-gradient(125deg, #fcfcfa 40%, #edf2f6);
+  border-bottom: 1px solid var(--borda);
+}
+
+.hero > div {
+  min-width: 0;
+}
+
+h1 em {
+  color: var(--dourado);
+  font-weight: 400;
+}
+
+.sobretitulo {
+  margin-bottom: 20px;
+  color: var(--dourado);
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.hero p:not(.sobretitulo):not(.nota) {
+  max-width: 48ch;
+  margin-bottom: 30px;
+  font-size: 1.05rem;
+}
+
+.hero .nota {
+  margin: 26px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--dourado-claro);
+  font-size: .875rem;
+}
+
+.hero > img,
+.hero > img.foto-igreja {
+  width: 100%;
+  height: auto;
+  border: 8px solid var(--branco);
+  border-radius: 24px;
+  box-shadow: 0 24px 60px -24px rgba(20, 44, 66, .35);
+}
+
+/* 4. SEÇÕES E GRADES */
+.secao {
+  padding: 86px var(--margem);
+}
+
+.duas,
+.grade {
+  display: grid;
+  gap: 24px;
+}
+
+.duas {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+}
+
+.grade.duas {
+  gap: 24px;
+}
+
+.tres {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.quatro {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+.suave {
+  background: var(--suave);
+}
+
+#historia .duas {
+  align-items: start;
+  gap: 72px;
+}
+
+#historia .duas > div {
+  padding-left: 28px;
+  border-left: 2px solid var(--dourado-claro);
+}
+
+#historia p:last-child {
+  margin-bottom: 0;
+}
+
+.card {
+  min-width: 0;
+  padding: 28px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-top: 3px solid var(--dourado-claro);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px -20px rgba(20, 44, 66, .3);
+}
+
+.card p {
+  margin-bottom: 0;
+  font-size: .95rem;
+  overflow-wrap: break-word;
+}
+
+.indice {
+  display: block;
+  margin-bottom: 24px;
+  color: var(--dourado);
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* 5. LIDERANÇA — fotos maiores, sem o padding que deformava os retratos. */
+#pastores .grade {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.pastor {
+  grid-column: span 2;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+/* Centraliza os dois últimos cartões quando existem cinco líderes. */
+.pastor:nth-child(4):nth-last-child(2) {
+  grid-column: 2 / span 2;
+}
+
+.pastor .retrato {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #e3e9ee;
+  border: 0;
+}
+
+.pastor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.pastor > div:last-child {
+  padding: 24px;
+}
+
+.pastor .sobretitulo {
+  margin-bottom: 8px;
+  font-size: .75rem;
+  letter-spacing: .1em;
+}
+
+.pastor h3 {
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+.pastor p:last-child {
+  margin-bottom: 0;
+  font-size: .95rem;
+}
+
+/* 6. PROGRAMAÇÃO */
+.azul {
+  color: #d3dfe8;
+  background: linear-gradient(120deg, var(--azul-profundo), #1b3b55);
+}
+
+.azul h2,
+.azul h3 {
+  color: var(--branco);
+}
+
+.azul .sobretitulo {
+  color: var(--dourado-claro);
+}
+
+#programacao > .duas {
+  grid-template-columns: .8fr 1.2fr;
+  align-items: center;
+  gap: 64px;
+}
+
+.agenda {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.agenda article {
+  display: grid;
+  grid-template-columns: 125px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .17);
+  border-radius: 14px;
+}
+
+.agenda article > span {
+  color: var(--dourado-claro);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.agenda article > div {
+  padding-left: 22px;
+  border-left: 1px solid rgba(255, 255, 255, .2);
+}
+
+.agenda h3 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+
+.agenda p {
+  display: inline-block;
+  margin: 0;
+  padding: 3px 12px;
+  color: #f5dba8;
+  background: rgba(224, 193, 139, .1);
+  border-radius: 6px;
+  font-size: .95rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 7. GALERIA, LOCALIZAÇÃO E CONTATO */
+.fotos {
+  margin-top: 32px;
+}
+
+.fotos button {
+  min-width: 0;
+  min-height: 210px;
+  padding: 0;
+  overflow: hidden;
+  color: #566878;
+  background: #e4eaee;
+  border: 1px dashed #a5b4c0;
+  border-radius: 16px;
+  font-size: .9rem;
+}
+
+.fotos button:disabled {
+  cursor: default;
+}
+
+.fotos button:not(:disabled) {
+  border-style: solid;
+}
+
+.fotos img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform .3s;
+}
+
+.fotos button:not(:disabled):hover img {
+  transform: scale(1.035);
+}
+
+#localizacao {
+  grid-template-columns: .8fr 1.2fr;
+  align-items: center;
+  gap: 64px;
+}
+
+address {
+  margin-bottom: 24px;
+  font-style: normal;
+  line-height: 1.9;
+}
+
+#mapa {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--suave);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+iframe {
+  display: block;
+  width: 100%;
+  height: 380px;
+  border: 0;
+}
+
+.contato {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  align-items: center;
+  gap: 64px;
+  background: var(--suave);
+  border-top: 1px solid var(--borda);
+}
+
+.contatos-igreja {
+  display: grid;
+  gap: 26px;
+  min-width: 0;
+  padding: 32px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.lista-contatos {
+  display: grid;
+  gap: 20px;
+}
+
+.contato-pastor {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contato-pastor + .contato-pastor {
+  padding-top: 20px;
+  border-top: 1px solid var(--borda);
+}
+
+.contato-pastor strong {
+  color: var(--azul);
+  font-weight: 650;
+}
+
+.contato-pastor span {
+  font-variant-numeric: tabular-nums;
+}
+
+.redes-sociais {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.redes-sociais a {
+  display: flex;
+  flex: 1 1 175px;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 16px;
+  background: var(--suave);
+  color: var(--azul);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  font-size: .875rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+
+.redes-sociais a:hover {
+  background: var(--azul);
+  color: var(--branco);
+}
+
+#redes:empty {
+  display: none;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 44px var(--margem);
+  color: #c9d5df;
+  background: var(--azul-profundo);
+}
+
+footer .marca {
+  color: var(--branco);
+}
+
+footer nav {
+  gap: 20px;
+}
+
+footer nav a:hover {
+  color: var(--dourado-claro);
+}
+
+footer p {
+  width: 100%;
+  margin: 0;
+  padding-top: 22px;
+  border-top: 1px solid #35495b;
+  font-size: .8rem;
+}
+
+dialog {
+  width: min(1000px, calc(100% - 32px));
+  max-width: none;
+  max-height: 90vh;
+  padding: 20px;
+  background: var(--fundo);
+  color: var(--azul);
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 0 24px 80px #0005;
+}
+
+dialog::backdrop {
+  background: rgba(5, 17, 28, .85);
+}
+
+dialog img {
+  width: 100%;
+  height: auto;
+  max-height: 65vh;
+  margin: 16px auto;
+  object-fit: contain;
+}
+
+dialog button {
+  display: block;
+  min-height: 44px;
+  margin-left: auto;
+  padding: 8px 16px;
+  background: var(--azul);
+  color: var(--branco);
+  border: 0;
+  border-radius: 8px;
+}
+
+dialog p {
+  margin: 0;
+}
+
+/* 8. TABLET E CELULAR */
+@media (max-width: 1000px) {
+  .hero {
+    gap: 32px;
+    padding-top: 60px;
+    padding-bottom: 64px;
+  }
+
+  .hero .acoes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #programacao > .duas,
+  #localizacao,
+  .contato {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 32px;
+  }
+
+  .agenda article {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .agenda article > div {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  #pastores .grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pastor,
+  .pastor:nth-child(4):nth-last-child(2) {
+    grid-column: auto;
+  }
+
+  .pastor:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 24px) / 2);
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 100px;
+  }
+
+  header {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .marca img {
+    flex-basis: 58px;
+    width: 58px;
+    height: 48px;
+  }
+
+  .marca {
+    gap: 10px;
+  }
+
+  .marca > span {
+    font-size: .65rem;
+  }
+
+  .marca strong {
+    font-size: 1.5rem;
+  }
+
+  #menu-botao:not([hidden]) {
+    display: block;
+  }
+
+  #menu {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding-top: 12px;
+    border-top: 1px solid var(--borda);
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  /* Sem JavaScript, a navegação continua acessível. */
+  body.js #menu {
+    display: none;
+  }
+
+  body.js #menu.aberto {
+    display: flex;
+  }
+
+  #menu a {
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+
+  #menu a:hover {
+    background: var(--suave);
+  }
+
+  .hero,
+  .duas,
+  #programacao > .duas,
+  #localizacao,
+  .contato {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .hero .acoes {
+    flex-direction: row;
+  }
+
+  .hero > img.foto-igreja {
+    border-width: 5px;
+    border-radius: 18px;
+  }
+
+  .secao {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  #historia .duas {
+    gap: 18px;
+  }
+
+  #historia h2 {
+    margin-bottom: 8px;
+  }
+
+  #historia .duas > div {
+    padding-left: 20px;
+  }
+
+  .tres {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda article {
+    grid-template-columns: 125px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .contatos-igreja {
+    padding: 24px;
+  }
+
+  iframe {
+    height: 320px;
+  }
+
+  footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --margem: 20px;
+  }
+
+  #pastores .grade,
+  .quatro {
+    grid-template-columns: 1fr;
+  }
+
+  .pastor:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .agenda article {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .hero .acoes {
+    flex-direction: column;
+  }
+
+  .contatos-igreja {
+    padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
