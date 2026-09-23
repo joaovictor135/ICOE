@@ -925,3 +925,162 @@ dialog p {
     transition: none !important;
   }
 }
+
+.linkft {
+  display: flex;
+  justify-content:flex-end;
+}
+
+/* PÁGINA DA GALERIA */
+
+.pagina-galeria .titulo-galeria {
+  padding: 72px var(--margem, 24px);
+  text-align: center;
+  color: #d3dfe8;
+  background: linear-gradient(
+    120deg,
+    var(--azul-profundo, #0c2032),
+    var(--azul, #142c42)
+  );
+}
+
+.pagina-galeria .titulo-galeria .sobretitulo {
+  color: var(--dourado-claro, #e0c18b);
+}
+
+.pagina-galeria .titulo-galeria h1 {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.pagina-galeria .titulo-galeria > p:not(.sobretitulo) {
+  max-width: 540px;
+  margin: 0 auto 28px;
+}
+
+.pagina-galeria .voltar-inicio {
+  background: transparent;
+  color: white;
+  border-color: #8295a6;
+}
+
+.pagina-galeria .voltar-inicio:hover {
+  background: rgba(255, 255, 255, .1);
+}
+
+.pagina-galeria #menu a[aria-current="page"] {
+  color: var(--dourado, #88632d);
+  text-decoration: underline;
+  text-underline-offset: 7px;
+}
+
+.pagina-galeria .cabecalho-fotos {
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.pagina-galeria .cabecalho-fotos h2 {
+  margin-bottom: 16px;
+}
+
+.pagina-galeria .fotos {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.pagina-galeria .fotos button {
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.pagina-galeria .fotos button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pagina-galeria .fotos button > span {
+  display: block;
+  padding: 20px;
+}
+
+@media (max-width: 900px) {
+  .pagina-galeria .fotos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .pagina-galeria .titulo-galeria {
+    padding: 48px 20px;
+  }
+
+  .pagina-galeria .fotos {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Fotos extras ficam escondidas até clicar em Ver mais. */
+.categoria-galeria .fotos > [hidden] {
+  display: none !important;
+}
+
+/* Área do botão */
+.acoes-ver-mais {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+/* Botão azul com texto branco */
+.botao-ver-mais {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  min-height: 48px;
+  padding: 13px 26px;
+
+  background: #142c42;
+  color: #ffffff;
+
+  border: 1px solid #142c42;
+  border-radius: 10px;
+
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+
+  transition:
+    background .2s,
+    border-color .2s,
+    transform .2s;
+}
+
+/* Dourado ao passar o mouse */
+.botao-ver-mais:hover {
+  background: #88632d;
+  border-color: #88632d;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Destaque para navegação com Tab */
+.botao-ver-mais:focus-visible {
+  outline: 3px solid #88632d;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .botao-ver-mais {
+    transition: none;
+  }
+
+  .botao-ver-mais:hover {
+    transform: none;
+  }
+}

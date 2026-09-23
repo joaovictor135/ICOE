@@ -462,7 +462,7 @@
     // 6. HABILITA A AMPLIAÇÃO DAS IMAGENS
     // ==========================================
 
-    document.querySelectorAll('img').forEach(imagem => {
+   document.querySelectorAll('main img').forEach(imagem => {
       // Não inclui a imagem do próprio visualizador.
       if (
         imagem.closest('dialog') ||
@@ -579,5 +579,136 @@
     );
   } else {
     iniciar();
+  }
+})();
+
+/*
+  VER MAIS / VER MENOS
+
+  Mantém as primeiras 6 fotos de cada categoria visíveis.
+  Cada botão controla somente a sua categoria.
+*/
+
+(() => {
+  function iniciarVerMais() {
+    const limite = 6;
+
+    const categorias = document.querySelectorAll(
+      '#galeria .categoria-galeria'
+    );
+
+    categorias.forEach((categoria, indice) => {
+      const grade = categoria.querySelector('.fotos');
+
+      if (!grade) {
+        return;
+      }
+
+      // Evita criar botões duplicados.
+      if (categoria.querySelector('.acoes-ver-mais')) {
+        return;
+      }
+
+      const fotos = Array.from(grade.children).filter(
+        elemento => elemento.matches('button')
+      );
+
+      // Com 6 fotos ou menos, não precisa de botão.
+      if (fotos.length <= limite) {
+        return;
+      }
+
+      const fotosExtras = fotos.slice(limite);
+
+      // Identificação usada pela acessibilidade do botão.
+      if (!grade.id) {
+        grade.id = `fotos-categoria-${indice + 1}`;
+      }
+
+      const nomeCategoria =
+        categoria.querySelector('h2')?.textContent.trim() ||
+        'categoria';
+
+      const areaBotao = document.createElement('div');
+      areaBotao.className = 'acoes-ver-mais';
+
+      const botao = document.createElement('button');
+
+      botao.type = 'button';
+      botao.className = 'botao-ver-mais';
+
+      botao.setAttribute('aria-controls', grade.id);
+
+      let expandido = false;
+
+      function atualizar() {
+        fotosExtras.forEach(foto => {
+          foto.hidden = !expandido;
+        });
+
+        botao.textContent = expandido
+          ? 'Ver menos'
+          : `Ver mais (${fotosExtras.length})`;
+
+        botao.setAttribute(
+          'aria-expanded',
+          String(expandido)
+        );
+
+        botao.setAttribute(
+          'aria-label',
+          expandido
+            ? `Ver menos fotos de ${nomeCategoria}`
+            : `Ver mais ${fotosExtras.length} fotos de ${nomeCategoria}`
+        );
+      }
+
+      botao.addEventListener('click', () => {
+        expandido = !expandido;
+
+        atualizar();
+
+        /*
+          Ao recolher uma categoria grande, mantém
+          o botão visível para não perder a posição.
+        */
+        if (!expandido) {
+          botao.focus({
+            preventScroll: true
+          });
+
+          const posicao = botao.getBoundingClientRect();
+
+          const alturaCabecalho =
+            document.querySelector('header')
+              ?.getBoundingClientRect().height || 0;
+
+          if (
+            posicao.top < alturaCabecalho ||
+            posicao.bottom > window.innerHeight
+          ) {
+            botao.scrollIntoView({
+              behavior: 'instant',
+              block: 'center'
+            });
+          }
+        }
+      });
+
+      atualizar();
+
+      areaBotao.append(botao);
+      grade.after(areaBotao);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener(
+      'DOMContentLoaded',
+      iniciarVerMais,
+      { once: true }
+    );
+  } else {
+    iniciarVerMais();
   }
 })();
